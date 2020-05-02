@@ -6,6 +6,7 @@ public class Film {
 	private String title;
 	private String description;
 	private Integer releaseYear;
+	private String language;
 	private int languageId;
 	private int rentalDuration;
 	private double rentalRate;
