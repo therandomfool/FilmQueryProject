@@ -11,8 +11,8 @@ public class FilmQueryApp {
 
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
-		app.test();
-//		app.launch();
+//		app.test();
+		app.launch();
 
 	}
 
@@ -37,26 +37,32 @@ public class FilmQueryApp {
 		boolean x = true;
 		
 		while (x == true) {
-			System.out.println("* * * * USER CHOICE MENU * * * * \n");
-			System.out.println("\t[ I ] FILM BY ID");
-			System.out.println("\t[ K ] FILM BY KEYWORD");
-			System.out.println("\t[ X ] EXIT");
+			System.out.println("* * * * > USER CHOICE MENU  < * * * * \n");
+			System.out.println("\t[ I ] > > > * FILM BY ID");
+			System.out.println("\t[ K ] > > > * FILM BY KEYWORD");
+			System.out.println("\t[ X ] > > > * EXIT");
 
 			String choice = input.nextLine();
 
 			switch (choice) {
-			case "I | i":
+			case "I":
+			case "i":
 				System.out.println("~ # ~ # FILM ID PLEASE: ");
 //				retrieve film by ID
 				break;
 				
-			case "K | k":
+			case "K":
+			case "k":
 				System.out.println("~ # ~ # FILM KEYWORD PLEASE: ");
 //				retrieve film by keyword
 				break;
 				
-			case "X | x":
-				System.out.println("~ # ~ # HAVE A FINE DAY # ~ # ~ ");
+			case "X":
+			case "x":
+				System.out.println("\t~ # ~ # HAVE A FINE DAY # ~ # ~ ");
+				System.out.println("\t\t~ # ~ # HAVE A FINE DAY # ~ # ~ ");
+				System.out.println("\t\t\t~ # ~ # HAVE A FINE DAY # ~ # ~ ");
+				System.out.println("\t\t\t\t~ # ~ # HAVE A FINE DAY # ~ # ~ ");
 //				exit
 				x = false;
 				break;
@@ -64,7 +70,9 @@ public class FilmQueryApp {
 				
 			default: 
 //				loop around for another pass
-				System.out.println("YOU HAVE NOT CHOOSEN A PROPER INPUT");
+				System.out.println("*----> YOU HAVE NOT CHOOSEN A PROPER INPUT");
+				System.out.println("\t\t*----> YOU HAVE NOT CHOOSEN A PROPER INPUT");
+				System.out.println("\t\t\t\t*----> YOU HAVE NOT CHOOSEN A PROPER INPUT\n\n");
 				
 			}
 			
