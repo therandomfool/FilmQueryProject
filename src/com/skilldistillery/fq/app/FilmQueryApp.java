@@ -18,10 +18,10 @@ public class FilmQueryApp {
 
 	}
 
-	private void test() throws SQLException {
-		Film film = db.findFilmById(1);
-		System.out.println(film);
-	}
+//	private void test() throws SQLException {
+//		Film film = db.findFilmById(1);
+//		System.out.println(film);
+//	}
 
 //launch
 	private void launch() throws SQLException {
@@ -39,19 +39,21 @@ public class FilmQueryApp {
 		boolean x = true;
 
 		while (x == true) {
+
 			System.out.println("* * * * > USER CHOICE MENU  < * * * * \n");
 			System.out.println("\t[ I ] > > > * FILM BY ID");
 			System.out.println("\t[ K ] > > > * FILM BY KEYWORD");
 			System.out.println("\t[ X ] > > > * EXIT");
 
 			String choice = input.nextLine();
+			System.out.println();
 
 			switch (choice) {
 			case "I":
 			case "i":
 				System.out.println("~ # ~ # FILM ID PLEASE: ");
 				int fID = input.nextInt();
-				
+
 //				retrieve film by ID
 				Film filmFind = (db.findFilmById(fID));
 				if (filmFind != null) {
@@ -65,16 +67,16 @@ public class FilmQueryApp {
 				System.out.println("~ # ~ # FILM KEYWORD PLEASE: ");
 				String fKW = input.nextLine();
 //				retrieve film by keyword
-				
+
 				List<Film> kwResult = db.findFBySearch(fKW);
-				if(kwResult.size() == 0) {
+				if (kwResult.size() == 0) {
 					System.out.println("- + - + - + NO MATCHES + - + - + - ");
-					
+
 					break;
 				} else {
 					for (Film film : kwResult) {
 						film.filmText();
-						System.out.println("* - + * - + * - + * - + * - + * - +");
+						System.out.println("* - + * - + * - + * - + * - + * - +\n");
 					}
 				}
 
@@ -95,7 +97,7 @@ public class FilmQueryApp {
 				System.out.println("\t\t\t\t*----> YOU HAVE NOT CHOOSEN A PROPER INPUT\n\n");
 
 			}
-
+			choice = null;
 		}
 	}
 }
