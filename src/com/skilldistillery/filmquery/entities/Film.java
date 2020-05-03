@@ -165,6 +165,16 @@ public class Film {
 				+ ", length=" + length + ", replacemnetCost=" + replacemnetCost + ", rating=" + rating
 				+ ", specialFeatures=" + specialFeatures + "]";
 	}
+
+
+	public String getLanguage() {
+		return language;
+	}
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 	
 	
 	

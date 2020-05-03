@@ -18,6 +18,7 @@ static {
 }
   @Override
   public Film findFilmById(int filmId) {
+	  System.out.println(filmId);
     return null;
   }
   
