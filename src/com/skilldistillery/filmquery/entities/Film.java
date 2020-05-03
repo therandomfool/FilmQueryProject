@@ -21,6 +21,38 @@ public class Film {
 	}
 	
 	
+	
+	
+	public Film(int id, String title, String description, Integer releaseYear, String language, int languageId,
+			int rentalDuration, double rentalRate, int length, double replacemnetCost, String rating,
+			String specialFeatures) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.language = language;
+		this.languageId = languageId;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacemnetCost = replacemnetCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+	}
+	
+	
+
+	public void filmText() {
+		System.out.println("#X*X#X* > > TITLE: ---->  " + title);
+		System.out.println("\t#X*X#X* > > YEAR: ---->  " + releaseYear);
+		System.out.println("\t\t#X*X#X* > > RATING: ---->  " + rating);
+		System.out.println("\t\t\t#X*X#X* > > DESCRIPTION: ---->  " + description);
+		
+	}
+	
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -175,7 +207,10 @@ public class Film {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	
+
+
+
+
 	
 	
 	
