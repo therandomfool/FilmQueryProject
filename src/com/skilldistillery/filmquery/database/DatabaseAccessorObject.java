@@ -28,7 +28,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public Film findFilmById(int filmId) throws SQLException {
 
 		Film film = null;
-		
+
 //		passwords
 		String user = "student";
 		String pass = "student";
@@ -44,7 +44,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		ResultSet filmResult = stmt.executeQuery();
 
 		while (filmResult.next()) {
-			film = new Film(); // Create the object
+
+			// Create the object
+			film = new Film();
+
 			// Here is our mapping of query columns to our object fields:
 			film.setId(filmResult.getInt("id"));
 			film.setTitle(filmResult.getString("title"));
@@ -63,7 +66,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public List<Film> findFBySearch(String fKW) throws SQLException {
 		Film film = null;
 		List<Film> filmKW = new ArrayList<>();
-		
+
 //		passwords
 		String user = "student";
 		String pass = "student";
@@ -71,28 +74,53 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		// connect to db
 		Connection conn = DriverManager.getConnection(URL, user, pass);
 
-//		S
-		String sql = "SELECT * FROM film WHERE title LIKE ?";
+//		Select statement /Prepared statement
+		String sql = "SELECT * FROM film WHERE film.title LIKE ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, "%" + fKW + "%");
 
 		ResultSet filmResult = stmt.executeQuery();
 
 		while (filmResult.next()) {
-			film = new Film(); // Create the object
+
+			// Create the object
+			film = new Film();
+
 			// Here is our mapping of query columns to our object fields:
 			film.setId(filmResult.getInt("id"));
 			film.setTitle(filmResult.getString("title"));
 			film.setDescription(filmResult.getString("description"));
 			film.setRating(filmResult.getString("rating"));
 			film.setReleaseYear(filmResult.getInt("release_year"));
+			filmKW.add(film);
 		}
-		
+
 		filmResult.close();
 		stmt.close();
 		conn.close();
 
 		return filmKW;
+
+	}
+
+	public List<Actor> findAByFID(int filmID) throws SQLException {
+		List<Actor> fABFI = new ArrayList<>();
+		Actor actor = null;
+
+//		passwords
+		String user = "student";
+		String pass = "student";
+
+		// connect to db
+		Connection conn = DriverManager.getConnection(URL, user, pass);
+
+//		Select statement /Prepared statement
+		String sql = "SELECT actor.first_name, actor.last_name, actor.id, film_actor.film_id\n" + "FROM actor\n"
+				+ "JOIN film_actor\n" + "ON film_actor.actor_id = actor.id\n" + "JOIN film\n"
+				+ "ON film.id = film_actor.film_id\n" + "WHERE film_id = ?";
+
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, filmID);
 
 	}
 

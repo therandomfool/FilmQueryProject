@@ -36,9 +36,9 @@ public class FilmQueryApp {
 	private void startUserInterface(Scanner input) throws SQLException {
 		System.out.println("USER STORY ONE");
 
-		boolean x = true;
+		boolean keepGoing = true;
 
-		while (x == true) {
+		while (keepGoing) {
 
 			System.out.println("* * * * > USER CHOICE MENU  < * * * * \n");
 			System.out.println("\t[ I ] > > > * FILM BY ID");
@@ -53,11 +53,14 @@ public class FilmQueryApp {
 			case "i":
 				System.out.println("~ # ~ # FILM ID PLEASE: ");
 				int fID = input.nextInt();
+				input.nextLine();
 
 //				retrieve film by ID
 				Film filmFind = (db.findFilmById(fID));
 				if (filmFind != null) {
 					filmFind.filmText();
+				} else {
+					System.out.println("YOUR ID INPUT WAS OFF SOMEHOW PLEASE TRY AGAIN\n\n");
 				}
 
 				break;
@@ -66,19 +69,19 @@ public class FilmQueryApp {
 			case "k":
 				System.out.println("~ # ~ # FILM KEYWORD PLEASE: ");
 				String fKW = input.nextLine();
+				fKW = fKW.toUpperCase();
 //				retrieve film by keyword
 
 				List<Film> kwResult = db.findFBySearch(fKW);
-				if (kwResult.size() == 0) {
-					System.out.println("- + - + - + NO MATCHES + - + - + - ");
-
-					break;
-				} else {
+				if (kwResult.size() != 0) {
 					for (Film film : kwResult) {
 						film.filmText();
-						System.out.println("* - + * - + * - + * - + * - + * - +\n");
+						System.out.println("\n* - + * - + * - + * - + * - + * - +\n\n");
 					}
+				} else {
+					System.out.println("- + - + - + NO MATCHES + - + - + - ");
 				}
+				break;
 
 			case "X":
 			case "x":
@@ -87,7 +90,7 @@ public class FilmQueryApp {
 				System.out.println("\t\t\t~ # ~ # HAVE A FINE DAY # ~ # ~ ");
 				System.out.println("\t\t\t\t~ # ~ # HAVE A FINE DAY # ~ # ~ ");
 //				exit
-				x = false;
+				keepGoing = false;
 				break;
 
 			default:
@@ -101,3 +104,6 @@ public class FilmQueryApp {
 		}
 	}
 }
+
+
+
