@@ -87,4 +87,18 @@
 - FEAR IS THE HAND THAT PULLS YOUR STRINGS
 -
 
+- SQL QUERIES
+-
+
+- ORM
+-
+
+- JOINS
+-
+
+- DATABASES
+-
+
+- JDBC
+
 
