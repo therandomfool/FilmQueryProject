@@ -1,7 +1,9 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
+
 public class Film {
-	
+
 	private int id;
 	private String title;
 	private String description;
@@ -14,15 +16,12 @@ public class Film {
 	private double replacemnetCost;
 	private String rating;
 	private String specialFeatures;
-	
-	
-	
+	private List<Actor> filmActors;
+
 	public Film() {
+//		no args
 	}
-	
-	
-	
-	
+
 	public Film(int id, String title, String description, Integer releaseYear, String language, int languageId,
 			int rentalDuration, double rentalRate, int length, double replacemnetCost, String rating,
 			String specialFeatures) {
@@ -39,95 +38,139 @@ public class Film {
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
 	}
-	
-	
 
 	public void filmText() {
-		System.out.println("#X*X#X* > > TITLE: ---->  " + title);
-		System.out.println("\t#X*X#X* > > YEAR: ---->  " + releaseYear);
-		System.out.println("\t\t#X*X#X* > > RATING: ---->  " + rating);
-		System.out.println("\t\t\t#X*X#X* > > DESCRIPTION: ---->  " + description);
-		
+		System.out.println("\n#X*X#X* > > - ~ TITLE: ---->  " + title);
+		delayOutPut();
+		System.out.println("\n\t#X*X#X* > > - ~ YEAR: ---->  " + releaseYear);
+		delayOutPut();
+		System.out.println("\n\t\t#X*X#X* > > - ~ RATING: ---->  " + rating);
+		delayOutPut();
+		System.out.println("\n\t\t\t#X*X#X* > > - ~  DESCRIPTION: ---->  " + description);
+		delayOutPut();
+		System.out.println("\n\t\t\t\t#X*X#X* > > - ~  FILM LANGUAGE: " + language);
+		delayOutPut();
+		System.out.println("\n\t\t\t\t * # * # * # * ACTORS IN APPEARING IN THIS FILM ( IN ASCENDING ORDER BY LAST NAME ) * # * # * # * \n");
+		System.out.println("\t\t\t\tVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV\n");
+		for (Actor actor : filmActors) {
+			System.out.println("\t\t\t---> * " + actor);
+			delayOutPut();
+		}
+
 	}
-	
 
+	public String getLanguage() {
+		return language;
+	}
 
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public List<Actor> getFilmActors() {
+		return filmActors;
+	}
+
+	public void setFilmActors(List<Actor> filmActors) {
+		this.filmActors = filmActors;
+	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public Integer getReleaseYear() {
 		return releaseYear;
 	}
+
 	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
 	}
+
 	public int getLanguageId() {
 		return languageId;
 	}
+
 	public void setLanguageId(int languageId) {
 		this.languageId = languageId;
 	}
+
 	public int getRentalDuration() {
 		return rentalDuration;
 	}
+
 	public void setRentalDuration(int rentalDuration) {
 		this.rentalDuration = rentalDuration;
 	}
+
 	public double getRentalRate() {
 		return rentalRate;
 	}
+
 	public void setRentalRate(double rentalRate) {
 		this.rentalRate = rentalRate;
 	}
+
 	public int getLength() {
 		return length;
 	}
+
 	public void setLength(int length) {
 		this.length = length;
 	}
+
 	public double getReplacemnetCost() {
 		return replacemnetCost;
 	}
+
 	public void setReplacemnetCost(double replacemnetCost) {
 		this.replacemnetCost = replacemnetCost;
 	}
+
 	public String getRating() {
 		return rating;
 	}
+
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
+
 	public String getSpecialFeatures() {
 		return specialFeatures;
 	}
+
 	public void setSpecialFeatures(String specialFeatures) {
 		this.specialFeatures = specialFeatures;
 	}
-	
-	
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((filmActors == null) ? 0 : filmActors.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((language == null) ? 0 : language.hashCode());
 		result = prime * result + languageId;
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
@@ -142,6 +185,7 @@ public class Film {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -156,7 +200,17 @@ public class Film {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		if (filmActors == null) {
+			if (other.filmActors != null)
+				return false;
+		} else if (!filmActors.equals(other.filmActors))
+			return false;
 		if (id != other.id)
+			return false;
+		if (language == null) {
+			if (other.language != null)
+				return false;
+		} else if (!language.equals(other.language))
 			return false;
 		if (languageId != other.languageId)
 			return false;
@@ -190,29 +244,21 @@ public class Film {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
-				+ ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
-				+ ", length=" + length + ", replacemnetCost=" + replacemnetCost + ", rating=" + rating
-				+ ", specialFeatures=" + specialFeatures + "]";
+				+ ", language=" + language + ", languageId=" + languageId + ", rentalDuration=" + rentalDuration
+				+ ", rentalRate=" + rentalRate + ", length=" + length + ", replacemnetCost=" + replacemnetCost
+				+ ", rating=" + rating + ", specialFeatures=" + specialFeatures + ", filmActors=" + filmActors + "]";
+	}
+	
+	private void delayOutPut() {
+		try {
+            Thread.sleep(1550); // 1000 is 1 sec
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
 	}
 
-
-	public String getLanguage() {
-		return language;
-	}
-
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-
-
-
-	
-	
-	
-	
 }
